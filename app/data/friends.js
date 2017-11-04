@@ -27,13 +27,3 @@ var friendData = [
 ];
 
 module.exports = friendData;
-
-/* Key: [Strong, Scary, Deadly, Real, Smart, Silly, Cynical, Cute, Funny, Gross]*/
-
-// Going to add a scale of 1 to 5 for each question, with 10 total questions.
-// Stranger Things characters I'll pull from:
-// Eleven
-// Dustin
-// Will
-// Mike
-// Lucas

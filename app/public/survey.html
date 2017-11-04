@@ -74,6 +74,7 @@
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
+
         <div id="strangerPopup" class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title">Your Stranger Things BFF!</h3>
@@ -102,6 +103,7 @@
         var currentURL = window.location.origin;
     
         $.post(currentURL + '/api/friends', surveyScore, function(data) {
+            console.log(data);
             $("#strangerName").text(friendData.name);
             $("#strangerPic").attr("src", friendData.photo);
             $("#strangerPopup").modal("show");
