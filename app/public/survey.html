@@ -1,10 +1,114 @@
-<!-- Going to add a scale of 1 to 5 for each question, with 10 total questions.
-Each score will be averaged out (?) and then matched with a Stranger Things character.
-Stranger Things characters I'll pull from:
-    Barb
-    Nancy
-    Eleven
-    Steve
-    Dustin
-    Mike
-    Demogorgon -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Friend Finder Survey</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="text-center">Who is your Stranger Things BFF?</h1>
+            <hr>
+            <h2 class="text-center">Please select how relevant the following words listed below are to you on a scale of 1 (not really me...) to 5 (YES, that is so me!) </h2>
+            <hr>
+     
+            <form role="form">
+                <div class="form-group">
+                    <label for="">Strong</label>
+                    <input type="number" name="strong" min="1" max="5">
+                </div>
+                <div class="form-group">
+                    <label for="">Scary</label>
+                    <input type="number" name="scary" min="1" max="5">
+                </div>
+                <div class="form-group">
+                    <label for="">Deadly</label>
+                    <input type="number" name="deadly" min="1" max="5">
+                </div>
+                <div class="form-group">
+                    <label for="">Real</label>
+                    <input type="number" name="real" min="1" max="5">
+                </div>
+                <div class="form-group">
+                    <label for="">Smart</label>
+                    <input type="number" name="smart" min="1" max="5">
+                </div>
+                <div class="form-group">
+                    <label for="">Silly</label>
+                    <input type="number" name="silly" min="1" max="5">
+                </div>
+                <div class="form-group">
+                    <label for="">Cynical</label>
+                    <input type="number" name="cynical" min="1" max="5">
+                </div>
+                <div class="form-group">
+                    <label for="">Cute</label>
+                    <input type="number" name="cute" min="1" max="5">
+                </div>
+                <div class="form-group">
+                    <label for="">Funny</label>
+                    <input type="number" name="funny" min="1" max="5">
+                </div>
+                <div class="form-group">
+                    <label for="">Gross</label>
+                    <input type="number" name="gross" min="1" max="5">
+                </div>
+                <button type="submit" class="btn btn-primary submit">Submit Your Answers</button>
+            </form>
+    
+            <div class="text-center">
+                <a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>		
+            </div>
+        </div>
+    <footer class="footer">
+        <div class="container">
+            <p>Pictures are used from the internet and all Stranger Things characters are the property of Netflix.
+            <br><a href="https://github.com/chelseymarie6/Friend-Finder" target="_blank">See my code on GitHub</a></p>
+        </div>
+    </footer>
+</div>
+    
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div id="strangerPopup" class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Your Stranger Things BFF!</h3>
+            </div>
+            <div class="modal-body">
+                <h3 id="strangerName"></h3>
+                <img id="strangerPic" src="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close window</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<!-- Handles form data from server -->
+<script type="text/javascript">
+    $(".submit").on("click", function(){
+        // Grabbing the form elements
+        var surveyScore = {
+            name: $('#name').val().trim(),
+            photo: $('#photo').val().trim(),
+            scores: [$('#strong').val().trim(),$('#scary').val().trim(),$('#deadly').val().trim(),$('#real').val().trim(),$('#smart').val().trim(),$('#silly').val().trim(),$('#cynical').val().trim(),$('#cute').val().trim(),$('#funny').val().trim(),$('#gross').val().trim()]
+        };
+        
+        var currentURL = window.location.origin;
+    
+        $.post(currentURL + '/api/friends', surveyScore, function(data) {
+            $("#strangerName").text(friendData.name);
+            $("#strangerPic").attr("src", friendData.photo);
+            $("#strangerPopup").modal("show");
+        });
+        return false;
+    });
+</script>
+
+</body>
+</html>

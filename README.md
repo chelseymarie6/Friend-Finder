@@ -10,7 +10,7 @@ The app matches the user with a Stranger Things character who has similar person
 
 ![Screenshot](/PNGs/ST2poster.png)
 
-This app uses Express to handle routing.
+Now head on over to Hawkins, Indiana and make a new friend!!
 
 Please see the full app on Heroku:
 www.heroku.com
